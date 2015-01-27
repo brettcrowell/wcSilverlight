@@ -1,0 +1,27 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="wcSilverlight" EntryPointType="wcSilverlight.App" RuntimeVersion="4.0.50826.0">
+  <Deployment.OutOfBrowserSettings>
+    <OutOfBrowserSettings ShortName="wcSilverlight Application" EnableGPUAcceleration="True" ShowInstallMenuItem="True">
+      <OutOfBrowserSettings.Blurb>wcSilverlight Application on your desktop; at home, at work or on the go.</OutOfBrowserSettings.Blurb>
+      <OutOfBrowserSettings.WindowSettings>
+        <WindowSettings Title="wcSilverlight Application" Height="400" Width="940" />
+      </OutOfBrowserSettings.WindowSettings>
+      <OutOfBrowserSettings.SecuritySettings>
+        <SecuritySettings ElevatedPermissions="Required" />
+      </OutOfBrowserSettings.SecuritySettings>
+      <OutOfBrowserSettings.Icons />
+    </OutOfBrowserSettings>
+  </Deployment.OutOfBrowserSettings>
+  <Deployment.Parts>
+    <AssemblyPart x:Name="wcSilverlight" Source="wcSilverlight.dll" />
+    <AssemblyPart x:Name="ImageTools" Source="ImageTools.dll" />
+    <AssemblyPart x:Name="ImageTools.IO.Jpeg" Source="ImageTools.IO.Jpeg.dll" />
+    <AssemblyPart x:Name="ImageTools.Utils" Source="ImageTools.Utils.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Data" Source="System.Windows.Controls.Data.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Data.Input" Source="System.Windows.Controls.Data.Input.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls" Source="System.Windows.Controls.dll" />
+    <AssemblyPart x:Name="System.Windows.Data" Source="System.Windows.Data.dll" />
+    <AssemblyPart x:Name="ImageTools.IO.Png" Source="ImageTools.IO.Png.dll" />
+    <AssemblyPart x:Name="System.ComponentModel.DataAnnotations" Source="System.ComponentModel.DataAnnotations.dll" />
+    <AssemblyPart x:Name="ICSharpCode.SharpZipLib.Silverlight" Source="ICSharpCode.SharpZipLib.Silverlight.dll" />
+  </Deployment.Parts>
+</Deployment>

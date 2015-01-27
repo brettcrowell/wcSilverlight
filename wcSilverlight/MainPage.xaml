@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="wcSilverlight.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:a="clr-namespace:System.Windows.Input;assembly=System.Windows"
+    mc:Ignorable="d"
+    d:DesignHeight="432" d:DesignWidth="950" Width="937" Height="400" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk">
+
+    <Grid x:Name="LayoutRoot" Background="White" Height="400" Width="933">
+        <Rectangle Height="360" HorizontalAlignment="Left" Margin="22,21,0,0" Name="videoPanel" Stroke="Black" StrokeThickness="1" VerticalAlignment="Top" Width="640" />
+        <sdk:TabControl Height="360" HorizontalAlignment="Left" Margin="668,21,0,0" Name="main" VerticalAlignment="Top" Width="250">
+            <sdk:TabItem Header="Devices" Name="tiWebcam">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="198*" />
+                        <ColumnDefinition Width="40*" />
+                    </Grid.ColumnDefinitions>
+                    <CheckBox Content="Verify every                    minutes" Height="16" HorizontalAlignment="Left" Margin="10,244,0,0" Name="cbReinit" VerticalAlignment="Top" Click="cbReinit_Click" Grid.ColumnSpan="2" IsChecked="True" />
+                    <ListBox Height="120" HorizontalAlignment="Left" Margin="6,32,0,0" Name="lbDevices" VerticalAlignment="Top" Width="226" SelectionChanged="lbDevices_SelectionChanged" Grid.ColumnSpan="2" SelectionMode="Single" ItemsSource="{Binding}" />
+                    <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="False" Margin="108,241,0,0" Name="tbReinit" Text="4" VerticalAlignment="Top" Width="60" MaxLength="5" KeyDown="only_numeric" />
+                    <CheckBox Content="Show Video Preview (if selected)" Height="16" HorizontalAlignment="Left" Margin="10,282,0,0" Name="cbPreview" VerticalAlignment="Top" IsChecked="True" IsEnabled="True" Grid.ColumnSpan="2" Width="234" />
+                    <sdk:Label Content="Available Devices" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" Name="lblAvailable" VerticalAlignment="Top" Width="149" />
+                    <Button Content="Test Capture" Height="23" HorizontalAlignment="Left" Margin="78,185,0,0" Name="btnTestImg" VerticalAlignment="Top" Width="75" />
+                </Grid>
+            </sdk:TabItem>
+            <sdk:TabItem Header="Filesystem" Name="tiFilesystem">
+                <Grid>
+                    <TextBox Height="23" HorizontalAlignment="Right" Margin="0,132,73,0" Name="tbImgNum" VerticalAlignment="Top" Width="60" Text="0" KeyDown="only_numeric" />
+                    <sdk:Label Height="19" HorizontalAlignment="Left" Margin="24,107,0,0" Name="lblImgName" VerticalAlignment="Top" Width="80" Content="Image Name" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="105,103,0,0" Name="tbImgName" VerticalAlignment="Top" Width="110" Text="timelapse" />
+                    <sdk:Label Content="Next Index" Height="23" HorizontalAlignment="Left" Margin="33,136,0,0" Name="lblImgNum" VerticalAlignment="Top" Width="67" />
+                    <ProgressBar Height="20" HorizontalAlignment="Left" Margin="6,297,0,0" Name="pbLapse" VerticalAlignment="Top" Width="226" />
+                </Grid>
+            </sdk:TabItem>
+            <sdk:TabItem Header="Lapse" Name="tiLapse">
+                <Grid>
+                    <sdk:Label Content="Delay start                    minutes" Height="19" HorizontalAlignment="Left" Margin="32,211,0,0" Name="label1" VerticalAlignment="Top" Width="188" />
+                    <sdk:Label Content="Interval                    seconds" Height="19" HorizontalAlignment="Left" Margin="49,168,0,0" Name="lblInterval" VerticalAlignment="Top" Width="174" />
+                    <sdk:Label Content="at                    fps" Height="19" Margin="81,125,44,0" Name="lblFps" VerticalAlignment="Top" />
+                    <sdk:Label Content="Into                    seconds" Height="19" HorizontalAlignment="Left" Margin="69,96,0,0" Name="lblSeconds" VerticalAlignment="Top" Width="145" />
+                    <sdk:Label Height="19" HorizontalAlignment="Left" Margin="17,67,0,0" Name="lblHours" VerticalAlignment="Top" Width="192" Content="Evenly Divide                    hours " />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="103,63,0,0" Name="tbHours" VerticalAlignment="Top" Width="60" Text="24" MaxLength="5" KeyDown="only_numeric" TextChanged="calculatorOptionsTextChanged" TabIndex="0" />
+                    <TextBox HorizontalAlignment="Left" Margin="103,92,0,208" Name="tbSeconds" Width="60" Text="60" MaxLength="5" KeyDown="only_numeric" TextChanged="calculatorOptionsTextChanged" TabIndex="1" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="103,121,0,0" Name="tbFPS" VerticalAlignment="Top" Width="60" Text="30" MaxLength="5" KeyDown="only_numeric" TextChanged="calculatorOptionsTextChanged" TabIndex="2" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="103,164,0,0" Name="tbDelay" VerticalAlignment="Top" Width="60" IsEnabled="False" Text="48" MaxLength="5" KeyDown="only_numeric" TabIndex="3" />
+                    <Button Content="Start" Height="23" HorizontalAlignment="Left" Margin="88,264,0,0" Name="btnStartLapse" VerticalAlignment="Top" Width="75" Click="btnStartLapse_Click" TabIndex="6" />
+                    <TextBox Height="23" HorizontalAlignment="Left" IsEnabled="True" Margin="103,207,0,0" MaxLength="5" Name="tbDelayStart" Text="0" VerticalAlignment="Top" Width="60" KeyDown="only_numeric" TabIndex="5" />
+                    <RadioButton Content="Infinite" Height="16" HorizontalAlignment="Right" Margin="0,22,24,0" Name="rbIndefinite" VerticalAlignment="Top" Click="cbIndefinate_Click" GroupName="mode" />
+                    <RadioButton Content="Timed" Height="16" HorizontalAlignment="Left" Margin="81,22,0,0" Name="rbTimed" VerticalAlignment="Top" IsThreeState="False" IsChecked="True" Click="cbIndefinate_Click" GroupName="mode" />
+                    <sdk:Label Height="24" HorizontalAlignment="Left" Margin="34,22,0,0" Name="lbMode" VerticalAlignment="Top" Width="41" Content="Mode" FontWeight="Bold" />
+                </Grid>
+            </sdk:TabItem>
+        </sdk:TabControl>
+    </Grid>
+</UserControl>
